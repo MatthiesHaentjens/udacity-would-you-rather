@@ -4,7 +4,7 @@ import { receiveQuestions } from './questions'
 import { setAuthedUser } from './authedUser';
 
 // To set based on user selection
-const AUTHED_ID = 'sarahedo'
+const AUTHED_ID = null
 
 export function handleInitialData() {
     return (dispatch) => {
