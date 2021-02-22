@@ -27,7 +27,7 @@ class App extends Component {
           ) : (
             <Fragment>
               <Header />
-              <div>
+              <div className='main-body'>
                 <Route path="/" exact component={Home} />
                 <Route path="/question/:id" component={Question} />
               </div>

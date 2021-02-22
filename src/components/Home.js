@@ -1,25 +1,52 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import AnsweredQuestionList from './AnsweredQuestionList'
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import QuestionList from "./QuestionList";
 
 class Home extends Component {
-    render() {
+  state = {
+    list: "answered",
+  };
 
-        return (
-            <div className='leader-board'>
-                <AnsweredQuestionList ids={this.props.answered} />
-            </div>
-        );
-    };
-};
+  render() {
+    console.log(this.state);
+    return (
+      <div className="question-list">
+        <div className="question-nav">
+          <button
+            id="answered"
+            onClick={() => this.setState({ list: "answered" })}
+          >
+            Answered
+          </button>
+          <button
+            id="unanswered"
+            onClick={() => this.setState({ list: "unanswered" })}
+          >
+            Unanswered
+          </button>
+        </div>
+        <hr />
+        {this.state.list === "answered" ? (
+          <QuestionList ids={this.props.answered} />
+        ) : this.state.list === "unanswered" ? (
+          <QuestionList ids={this.props.unanswered} />
+        ) : (
+          <div>Oeps something went wrong</div>
+        )}
+      </div>
+    );
+  }
+}
 
 function mapStateToProps({ authedUser, questions, users }) {
-    const answered = Object.keys(users[authedUser].answers)
-    const unanswered = Object.keys(questions).filter(id => !answered.includes(id))
-    return {
-        answered: answered,
-        unanswered: unanswered
-    }
+  const answered = Object.keys(users[authedUser].answers);
+  const unanswered = Object.keys(questions).filter(
+    (id) => !answered.includes(id)
+  );
+  return {
+    answered: answered,
+    unanswered: unanswered,
+  };
 }
 
 export default connect(mapStateToProps)(Home);

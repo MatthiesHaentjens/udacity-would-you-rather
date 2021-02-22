@@ -56,7 +56,20 @@ body {
   margin-bottom: 20px;
 }
 
-.leader-board {
+.main-body {
+  grid-area: main;
+  margin-bottom: 20px;
+}
+
+.questions {
+  grid-area: main;
+}
+
+.question-link {
+  display: flex;
+}
+
+.question {
   grid-area: main;
 }
 
