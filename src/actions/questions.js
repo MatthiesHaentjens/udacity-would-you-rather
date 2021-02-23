@@ -1,4 +1,4 @@
-import { _saveQuestionAnswer } from "../utils/_DATA";
+import { _saveQuestionAnswer, _saveQuestion } from "../utils/_DATA";
 export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
 export const ANSWER_QUESTION = "ANSWER_QUESTION";
 export const ADD_QUESTION = "ADD_QUESTION";
@@ -34,5 +34,17 @@ export function addQuestion(question) {
   return {
     type: ADD_QUESTION,
     question,
+  };
+}
+
+export function handleAddQuestion(question) {
+  return (dispatch) => {
+    dispatch(addQuestion(question));
+    console.log(question)
+    return _saveQuestion(question).catch((e) => {
+      console.warn("Error in handleAddQuestion", e);
+      dispatch(answerQuestion(question));
+      alert("There was an error adding the question. Try again");
+    });
   };
 }

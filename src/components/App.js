@@ -6,6 +6,7 @@ import Login from "./Login";
 import Home from "./Home";
 import Header from "./Header";
 import Question from "./Question";
+import AddQuestion from "./AddQuestion";
 import "../App.css";
 
 const Footer = () => {
@@ -18,7 +19,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props.authedUser);
     return (
       <Router>
         <div className="app-container">
@@ -30,6 +30,7 @@ class App extends Component {
               <div className='main-body'>
                 <Route path="/" exact component={Home} />
                 <Route path="/question/:id" component={Question} />
+                <Route path="/add" component={AddQuestion} />
               </div>
               <Footer />
             </Fragment>

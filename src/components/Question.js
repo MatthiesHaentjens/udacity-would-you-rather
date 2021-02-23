@@ -39,8 +39,7 @@ class Question extends Component {
   render() {
     const { authedUser, questions, users, id } = this.props;
     const { votes1, votes2, disabled } = this.state;
-
-    console.log();
+    
     return (
       <div className="question">
         <h1>Would you rather</h1>
