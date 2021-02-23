@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import { handleAnswerQuestion } from "../actions/questions";
 
 class Question extends Component {
   state = {
@@ -23,9 +24,17 @@ class Question extends Component {
     }
   }
 
-  // handleSubmit = (option) => {
-  //   alert(option)
-  // }
+  handleAnswer = (e, answer) => {
+    e.preventDefault();
+    const { dispatch, id, authedUser } = this.props;
+    dispatch(
+      handleAnswerQuestion({
+        authedUser: authedUser,
+        qid: id,
+        answer: answer,
+      })
+    );
+  };
 
   render() {
     console.log(this.state);
@@ -47,7 +56,11 @@ class Question extends Component {
           </div>
         </div>
         <div className="options">
-          <button className="option-box" disabled={disabled}>
+          <button
+            className="option-box"
+            disabled={disabled}
+            onClick={(e) => this.handleAnswer(e, 'optionOne')}
+          >
             <div className="vote-percentage">
               {disabled
                 ? `${Math.round((votes1 / (votes1 + votes2)) * 100, 0)}%`
@@ -64,7 +77,11 @@ class Question extends Component {
             ) : null}
           </button>
           <div className="or">Or</div>
-          <button className="option-box" disabled={disabled}>
+          <button
+            className="option-box"
+            disabled={disabled}
+            onClick={(e) => this.handleAnswer(e, 'optionTwo')}
+          >
             <div className="vote-percentage">
               {disabled
                 ? `${Math.round((votes2 / (votes1 + votes2)) * 100, 0)}%`

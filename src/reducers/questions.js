@@ -14,13 +14,19 @@ export function questions(state = {}, action) {
                 // that has all the existing state data
                 ...state,
                 // that has all the exiting question data
-                ...state.questions,
+                // ...state.questions,
                 // with a new question object that replaces the existing question
                 [action.id]: {
                     // that has all the existing question data
-                    ...state.questions[action.id],
-                    // with the user id added to votes of the chosen answer by the user
-                    [action.answer]: state.questions[action.id][action.answer].votes.concat([action.authedUser])
+                    ...state[action.id],
+                    // with a new answer object that replaces the existing answers
+                    [action.answer]: {
+                        // with the user id added to votes of the chosen answer by the user
+                        votes: state[action.id][action.answer].votes.concat([action.authedUser]),
+                        // with the existing text
+                        text: state[action.id][action.answer].text,
+                        
+                    }
                 }
             }
         case ADD_QUESTION:
