@@ -37,7 +37,6 @@ class Question extends Component {
   };
 
   render() {
-    console.log(this.state);
     const { authedUser, questions, users, id } = this.props;
     const { votes1, votes2, disabled } = this.state;
 

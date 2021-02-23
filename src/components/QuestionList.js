@@ -11,7 +11,6 @@ class QuestionList extends Component {
         return { id: id, timestamp: questions[id].timestamp };
       })
       .sort((a, b) => b.timestamp - a.timestamp);
-    console.log(sortedIds);
 
     return (
       <div className="questions">

@@ -9,19 +9,25 @@ class Login extends Component {
     dispatch(setAuthedUser(e.target.value));
   };
   render() {
+    const { users, userIds } = this.props;
     return (
-      <div className="login-form">
-        <div className="login-form-header">Please Sign In</div>
-        <select id="user-select" onChange={this.handleSubmit}>
-          <option value="login">Choose your user</option>
-          {this.props.userIds.map((id) => {
-            return (
-              <option key={id} value={id}>
-                {id}
-              </option>
-            );
-          })}
-        </select>
+      <div className='login'>
+        <h1>Would you rather ...</h1>
+        <div className="login-form">
+          <div className="login-form-header">Sign in to play</div>
+          <div className="select-holder">
+            <select id="user-select" onChange={this.handleSubmit}>
+              <option value="login">Choose your user</option>
+              {userIds.map((id) => {
+                return (
+                  <option key={id} value={id}>
+                    {users[id].name}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+        </div>
       </div>
     );
   }
@@ -29,6 +35,7 @@ class Login extends Component {
 
 function mapStateToProps({ users }) {
   return {
+    users,
     userIds: Object.keys(users),
   };
 }

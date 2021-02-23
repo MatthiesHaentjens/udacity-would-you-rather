@@ -61,21 +61,54 @@ body {
   font-weight: bolder;
 }
 
-.login-form {
+.main-body {
+  grid-area: main;
+}
+
+.login {
   grid-area: main;
   display: flex;
-  align-self: center;
+  justify-content: center;
+  justify-self: center;
   align-items: center;
   flex-direction: column;
-  width: 300px;
+}
+
+.login-form {
+  grid-area: main;
+  width: 350px;
   padding: 10px;
 }
 .login-form-header {
-  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: darkblue solid 1px;
+  background-color: darkblue;
+  border-radius: 10px 10px 0px 0px;
+  height: 70px;
+  width: 350px;
+  font-size: x-large;
+  font-weight: bold;
+  color: white;
 }
 
-.main-body {
-  grid-area: main;
+.select-holder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: darkblue solid 1px;
+  border-radius: 0px 0px 10px 10px;
+  height: 150px;
+  width: 350px;
+}
+
+#user-select {
+  border-radius: 10px;
+  height: 50px;
+  width: 300px;
+  padding: 10px;
+  font-size: large;
 }
 
 .question-nav {
