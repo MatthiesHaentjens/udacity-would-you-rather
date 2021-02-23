@@ -13,13 +13,13 @@ class Home extends Component {
       <div className="question-list">
         <div className="question-nav">
           <button
-            id="answered"
+            className='button'
             onClick={() => this.setState({ list: "answered" })}
           >
             Answered
           </button>
           <button
-            id="unanswered"
+            className='button'
             onClick={() => this.setState({ list: "unanswered" })}
           >
             Unanswered

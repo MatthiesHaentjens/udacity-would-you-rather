@@ -22,8 +22,8 @@ class QuestionList extends Component {
               key={item.id}
               className="question-link"
             >
-              <div>{questions[item.id].optionOne.text} Or ...</div>
-              <div>Asked on {new Date(questions[item.id].timestamp).toLocaleString()}</div>
+              <div>Would you rather {questions[item.id].optionOne.text} or ...&nbsp;</div>
+              <div>asked by {questions[item.id].author} on {new Date(questions[item.id].timestamp).toLocaleDateString()}</div>
             </Link>
           );
         })}

@@ -6,10 +6,14 @@ body {
   margin: 0px;
 }
 
+#root {
+  height: 100%;
+}
+
 .app-container {
   display: grid;
   grid-template-columns: 2.5% 1fr 2.5%;
-  grid-template-rows: 50px 1fr 200px;
+  grid-template-rows: 50px 1fr 100px;
   grid-template-areas:
     "header header header"
     ". main ."
@@ -58,6 +62,40 @@ body {
 
 .main-body {
   grid-area: main;
+}
+
+.question-nav {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0px 20px 0px;
+}
+
+.button {
+  width: 200px;
+  height: 40px;
+  background-color: darkgreen;
+  color: white;
+  font-size: large;
+  font-weight: bold;
+  border-radius: 5px;
+  border: darkgreen solid 2px;
+  margin: 0px 10px 0px 10px;
+}
+
+.button:hover {
+  background-color: lime;
+  border-color:lime;
+  color: black;
+}
+
+.button:focus {
+  background-color:lightskyblue;
+  border-color:lightskyblue;
+  color: darkblue;
+}
+
+hr {
+  border: green solid 2px;
   margin-bottom: 20px;
 }
 
@@ -67,14 +105,78 @@ body {
 
 .question-link {
   display: flex;
+  text-decoration: none;
+  color: black;
+  font-size: large;
+  background-color: lightgrey;
+  margin: 10px;
+  padding: 10px;
 }
 
 .question {
   grid-area: main;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+}
+
+.options {
+  display: flex;
+}
+
+.option-box {
+  border: darkblue solid 3px;
+  border-radius: 10px;
+  padding: 100px;
+  margin: 20px 0px 20px 0px;
+  z-index: 0;
+}
+
+.option-box:focus {
+  background-color: darkblue;
+  color: white;
+}
+
+.or {
+  display: flex;
+  border-radius: 50%;
+  text-align: center;
+  justify-content: center;
+  align-self: center;
+  align-items: center;
+  height: 70px;
+  width: 70px;
+  margin: -30px;
+  z-index: 1;
+  background-color: cornflowerblue;
+  font-size: large;
+  font-weight: 700;
+}
+
+.vote-percentage {
+  font-size: xx-large;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.vote-numbers {
+  font-size: medium;
+  color: gray;
+}
+
+.question-option {
+  font-size: x-large;
+  font-style: italic;
+  margin-top: 10px;
 }
 
 .footer {
   grid-area: footer;
   background-color: darkgray;
+  padding: 10px;
   width: 100%;
 }

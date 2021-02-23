@@ -14,17 +14,17 @@ class Question extends Component {
         <h1>Would you rather</h1>
         <div className="author">by {users[authedUser].name}</div>
         <div className="options">
-          <div className="option-one">
-            <div>{Math.round((votes1 / (votes1 + votes2)) * 100, 0)}%</div>
-            <div>{votes1}</div>
-            <div>{questions[id].optionOne.text}</div>
-          </div>
-          <div>Or</div>
-          <div className="option-two">
-            <div>{Math.round((votes2 / (votes1 + votes2)) * 100, 0)}%</div>
-            <div>{votes2}</div>
-            <div>{questions[id].optionTwo.text}</div>
-          </div>
+          <button className="option-box">
+            <div className='vote-percentage'>{Math.round((votes1 / (votes1 + votes2)) * 100, 0)}%</div>
+            <div className='vote-numbers'>number of votes {votes1}</div>
+            <div className='question-option'>{questions[id].optionOne.text}</div>
+          </button>
+          <div className='or'>Or</div>
+          <button className="option-box">
+            <div className='vote-percentage'>{Math.round((votes2 / (votes1 + votes2)) * 100, 0)}%</div>
+            <div className='vote-numbers'>number of votes {votes2}</div>
+            <div className='question-option'>{questions[id].optionTwo.text}</div>
+          </button>
         </div>
       </div>
     );
