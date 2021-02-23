@@ -3,27 +3,82 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
 class Question extends Component {
-  render() {
-    console.log(this.props);
-    const { authedUser, questions, users, id } = this.props;
-    const votes1 = questions[id].optionOne.votes.length;
-    const votes2 = questions[id].optionTwo.votes.length;
+  state = {
+    votes1: 0,
+    votes2: 0,
+    disabled: false,
+  };
 
+  componentDidMount() {
+    const { questions, id, authedUser } = this.props;
+    const answered =
+      questions[id].optionOne.votes.includes(authedUser) ||
+      questions[id].optionTwo.votes.includes(authedUser);
+    if (answered === true) {
+      this.setState({
+        votes1: questions[id].optionOne.votes.length,
+        votes2: questions[id].optionTwo.votes.length,
+        disabled: true,
+      });
+    }
+  }
+
+  // handleSubmit = (option) => {
+  //   alert(option)
+  // }
+
+  render() {
+    console.log(this.state);
+    const { authedUser, questions, users, id } = this.props;
+    const { votes1, votes2, disabled } = this.state;
+
+    console.log();
     return (
       <div className="question">
         <h1>Would you rather</h1>
-        <div className="author">by {users[authedUser].name}</div>
+        <div className="author">
+          by{" "}
+          <div className="question-circle">
+            <img
+              className="question-avatar"
+              src={users[questions[id].author].avatarURL}
+              alt="avatar"
+            />
+          </div>
+        </div>
         <div className="options">
-          <button className="option-box">
-            <div className='vote-percentage'>{Math.round((votes1 / (votes1 + votes2)) * 100, 0)}%</div>
-            <div className='vote-numbers'>number of votes {votes1}</div>
-            <div className='question-option'>{questions[id].optionOne.text}</div>
+          <button className="option-box" disabled={disabled}>
+            <div className="vote-percentage">
+              {disabled
+                ? `${Math.round((votes1 / (votes1 + votes2)) * 100, 0)}%`
+                : ""}
+            </div>
+            <div className="vote-numbers">
+              {disabled ? `number of votes ${votes1}` : ""}
+            </div>
+            <div className="question-option">
+              {questions[id].optionOne.text}
+            </div>
+            {questions[id].optionOne.votes.includes(authedUser) ? (
+              <div className="user-answer">My answer</div>
+            ) : null}
           </button>
-          <div className='or'>Or</div>
-          <button className="option-box">
-            <div className='vote-percentage'>{Math.round((votes2 / (votes1 + votes2)) * 100, 0)}%</div>
-            <div className='vote-numbers'>number of votes {votes2}</div>
-            <div className='question-option'>{questions[id].optionTwo.text}</div>
+          <div className="or">Or</div>
+          <button className="option-box" disabled={disabled}>
+            <div className="vote-percentage">
+              {disabled
+                ? `${Math.round((votes2 / (votes1 + votes2)) * 100, 0)}%`
+                : ""}
+            </div>
+            <div className="vote-numbers">
+              {disabled ? `number of votes ${votes2}` : ""}
+            </div>
+            <div className="question-option">
+              {questions[id].optionTwo.text}
+            </div>
+            {questions[id].optionTwo.votes.includes(authedUser) ? (
+              <div className="user-answer">My answer</div>
+            ) : null}
           </button>
         </div>
       </div>

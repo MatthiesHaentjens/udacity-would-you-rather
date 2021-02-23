@@ -1,26 +1,41 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
 
-const Header = () => {
+class Header extends Component {
+  render() {
+    const { authedUser, users } = this.props;
     return (
       <div className="header">
-        <Link to='/' className="nav-link">
+        <Link to="/" className="nav-link">
           Home
         </Link>
-        <Link to='/' className="nav-link">
+        <Link to="/" className="nav-link">
           Leaderboard
         </Link>
-        <Link to='/' className="nav-link">
+        <Link to="/" className="nav-link">
           Add Question
         </Link>
-        <div className="nav-avatar">Picture</div>
-        <Link to='/' className="logout-link">
+        <div className="nav-circle">
+          <img
+            className="nav-avatar"
+            src={users[authedUser].avatarURL}
+            alt="avatar"
+          />
+        </div>
+        <Link to="/" className="logout-link">
           Logout
         </Link>
       </div>
     );
+  }
+}
+
+function mapStateToProps({ authedUser, users }) {
+  return {
+    authedUser,
+    users,
   };
+}
 
-
-export default withRouter(connect()(Header));
+export default withRouter(connect(mapStateToProps)(Header));

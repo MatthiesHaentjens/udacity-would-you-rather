@@ -27,9 +27,9 @@ class Home extends Component {
         </div>
         <hr />
         {this.state.list === "answered" ? (
-          <QuestionList ids={this.props.answered} />
+          <QuestionList ids={this.props.answered}/>
         ) : this.state.list === "unanswered" ? (
-          <QuestionList ids={this.props.unanswered} />
+          <QuestionList ids={this.props.unanswered}/>
         ) : (
           <div>Oeps something went wrong</div>
         )}
