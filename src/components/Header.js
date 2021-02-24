@@ -10,7 +10,7 @@ class Header extends Component {
         <Link to="/" className="nav-link">
           Home
         </Link>
-        <Link to="/" className="nav-link">
+        <Link to="/leaderboard" className="nav-link">
           Leaderboard
         </Link>
         <Link to="/add" className="nav-link">

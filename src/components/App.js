@@ -8,6 +8,7 @@ import Header from "./Header";
 import Question from "./Question";
 import AddQuestion from "./AddQuestion";
 import "../App.css";
+import LeaderBoard from "./LeaderBoard";
 
 const Footer = () => {
   return <div className="footer">Footer</div>;
@@ -31,6 +32,7 @@ class App extends Component {
                 <Route path="/" exact component={Home} />
                 <Route path="/question/:id" component={Question} />
                 <Route path="/add" component={AddQuestion} />
+                <Route path="/leaderboard" component={LeaderBoard} />
               </div>
               <Footer />
             </Fragment>
