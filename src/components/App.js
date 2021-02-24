@@ -7,8 +7,9 @@ import Home from "./Home";
 import Header from "./Header";
 import Question from "./Question";
 import AddQuestion from "./AddQuestion";
-import "../App.css";
 import LeaderBoard from "./LeaderBoard";
+import "../App.css";
+
 
 const Footer = () => {
   return <div className="footer">Footer</div>;

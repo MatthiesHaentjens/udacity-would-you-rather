@@ -33,6 +33,12 @@ body {
   top: 0;
 }
 
+.loggedin-user {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .nav-circle {
   display: flex;
   height: 40px;
@@ -40,11 +46,15 @@ body {
   border-radius: 50%;
   position: relative;
   overflow: hidden;
-  margin-left: 10px;
+  margin: 0px 10px 0px 0px;
 }
 
 .nav-avatar {
   width: 40px;
+}
+
+.user-name:hover {
+  color: yellow;
 }
 
 .nav-link {
@@ -55,11 +65,21 @@ body {
 }
 
 .logout-link {
-  text-decoration: none;
-  color: red;
+  width: 120px;
+  height: 35px;
+  border: none;
+  background-color: tomato;
+  color: white;
   font-size: large;
   font-weight: bolder;
 }
+
+.logout-link:hover {
+  background-color: red;
+  color: white;
+
+}
+
 
 .main-body {
   grid-area: main;
@@ -120,29 +140,29 @@ body {
 .button {
   width: 200px;
   height: 40px;
-  background-color: darkgreen;
+  background-color: lightskyblue;
   color: white;
   font-size: large;
   font-weight: bold;
   border-radius: 5px;
-  border: darkgreen solid 2px;
+  border: lightskyblue solid 2px;
   margin: 0px 10px 0px 10px;
 }
 
 .button:hover {
-  background-color: lime;
-  border-color:lime;
-  color: black;
+  background-color: darkblue;
+  border-color:darkblue;
+  color: white;
 }
 
 .button:focus {
-  background-color:lightskyblue;
-  border-color:lightskyblue;
-  color: darkblue;
+  background-color:darkblue;
+  border-color:darkblue;
+  color: white;
 }
 
 hr {
-  border: green solid 2px;
+  border: lightskyblue solid 2px;
   margin-bottom: 20px;
 }
 

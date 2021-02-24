@@ -5,7 +5,7 @@ import { Link, withRouter } from "react-router-dom";
 class QuestionList extends Component {
 
   render() {
-    const { questions, ids } = this.props;
+    const { questions, users, ids } = this.props;
     const sortedIds = ids
       .map((id) => {
         return { id: id, timestamp: questions[id].timestamp };
@@ -22,7 +22,7 @@ class QuestionList extends Component {
               className="question-link"
             >
               <div>Would you rather {questions[item.id].optionOne.text} or ...&nbsp;</div>
-              <div>asked by {questions[item.id].author} on {new Date(questions[item.id].timestamp).toLocaleDateString()}</div>
+              <div>asked by {users[questions[item.id].author].name} on {new Date(questions[item.id].timestamp).toLocaleDateString()}</div>
             </Link>
           );
         })}
@@ -31,9 +31,10 @@ class QuestionList extends Component {
   }
 }
 
-function mapStateToProps({ questions }) {
+function mapStateToProps({ questions, users }) {
   return {
-    questions: questions,
+    questions,
+    users,
   };
 }
 
