@@ -72,7 +72,7 @@ class AddQuestion extends Component {
               />
             </div>
           </div>
-          <button type="submit">Save Question</button>
+          <button className="submit" type="submit">Save Question</button>
         </form>
       </div>
     );

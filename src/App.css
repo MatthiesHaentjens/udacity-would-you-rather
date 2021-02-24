@@ -332,9 +332,48 @@ tr:nth-child(odd) {
   margin: 10px;
 }
 
+.add-question-from {
+  grid-area: main;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#option1 {
+  width: 300px;
+  height: 30px;
+  margin-top: 10px;
+}
+
+#option2 {
+  width: 300px;
+  height: 30px;
+  margin-top: 10px;
+}
+
+.submit {
+  width: 200px;
+  height: 40px;
+  background-color: seagreen;
+  border: none;
+  font-size: large;
+  font-weight: bold;
+  color: white;
+}
+
+
 .footer {
   grid-area: footer;
   background-color: darkgray;
   padding: 10px;
   width: 100%;
+}
+
+.oeps {
+  text-align: center;
+  justify-content: center;
+  padding: 250px;
+  font-size: xx-large;
+  font-weight: bolder;
+  color: purple;
 }
