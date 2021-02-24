@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { FourOhFour } from "./FourOhFour";
 import QuestionList from "./QuestionList";
 
 class Home extends Component {
   state = {
-    list: "answered",
+    list: "unanswered",
   };
 
   render() {
@@ -30,7 +31,7 @@ class Home extends Component {
         ) : this.state.list === "unanswered" ? (
           <QuestionList ids={this.props.unanswered}/>
         ) : (
-          <div>Oeps something went wrong</div>
+          <FourOhFour />
         )}
       </div>
     );

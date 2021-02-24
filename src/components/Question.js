@@ -26,7 +26,7 @@ class Question extends Component {
 
   handleAnswer = (e, answer) => {
     e.preventDefault();
-    const { dispatch, id, authedUser } = this.props;
+    const { dispatch, questions, id, authedUser } = this.props;
     dispatch(
       handleAnswerQuestion({
         authedUser: authedUser,
@@ -34,12 +34,17 @@ class Question extends Component {
         answer: answer,
       })
     );
+    this.setState({
+      votes1: questions[id].optionOne.votes.length,
+      votes2: questions[id].optionTwo.votes.length,
+      disabled: true,
+    });
   };
 
   render() {
     const { authedUser, questions, users, id } = this.props;
     const { votes1, votes2, disabled } = this.state;
-    
+
     return (
       <div className="question">
         <h1>Would you rather</h1>

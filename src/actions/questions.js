@@ -1,4 +1,5 @@
 import { _saveQuestionAnswer, _saveQuestion } from "../utils/_DATA";
+import { saveUserQuestionAnswer, saveUserQuestion } from './users'
 export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
 export const ANSWER_QUESTION = "ANSWER_QUESTION";
 export const ADD_QUESTION = "ADD_QUESTION";
@@ -22,6 +23,7 @@ export function answerQuestion({ authedUser, qid, answer }) {
 export function handleAnswerQuestion(info) {
   return (dispatch) => {
     dispatch(answerQuestion(info));
+    dispatch(saveUserQuestionAnswer(info))
     return _saveQuestionAnswer(info).catch((e) => {
       console.warn("Error in handleAnswerQuestion", e);
       dispatch(answerQuestion(info));
@@ -40,7 +42,10 @@ export function addQuestion(question) {
 export function handleAddQuestion(question) {
   return (dispatch) => {
     return _saveQuestion(question)
-      .then((question) => dispatch(addQuestion(question)))
+      .then((question) => {
+        dispatch(addQuestion(question));
+        dispatch(saveUserQuestion(question));
+      })
       .catch((e) => {
         console.warn("Error in handleAddQuestion", e);
         dispatch(answerQuestion(question));
