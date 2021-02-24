@@ -39,12 +39,12 @@ export function addQuestion(question) {
 
 export function handleAddQuestion(question) {
   return (dispatch) => {
-    dispatch(addQuestion(question));
-    console.log(question)
-    return _saveQuestion(question).catch((e) => {
-      console.warn("Error in handleAddQuestion", e);
-      dispatch(answerQuestion(question));
-      alert("There was an error adding the question. Try again");
+    return _saveQuestion(question)
+      .then((question) => dispatch(addQuestion(question)))
+      .catch((e) => {
+        console.warn("Error in handleAddQuestion", e);
+        dispatch(answerQuestion(question));
+        alert("There was an error adding the question. Try again");
     });
   };
 }

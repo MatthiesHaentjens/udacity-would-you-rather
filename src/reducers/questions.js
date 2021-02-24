@@ -34,12 +34,7 @@ export function questions(state = {}, action) {
                 // that has all the existing state data
                 ...state,
                 // with a new questions object
-                questions: {
-                    // that has the existing questions data
-                    ...state.questions,
-                    // with a new question added
-                    [action.question.id]: action.question
-                }
+                [action.question.id]: action.question
             }
         default:
             return state
