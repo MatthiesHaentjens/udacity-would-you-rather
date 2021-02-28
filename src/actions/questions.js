@@ -26,7 +26,6 @@ export function handleAnswerQuestion(info) {
     dispatch(saveUserQuestionAnswer(info))
     return _saveQuestionAnswer(info).catch((e) => {
       console.warn("Error in handleAnswerQuestion", e);
-      dispatch(answerQuestion(info));
       alert("There was an error answering the question. Try again");
     });
   };
@@ -41,6 +40,7 @@ export function addQuestion(question) {
 
 export function handleAddQuestion(question) {
   return (dispatch) => {
+    console.log(question)
     return _saveQuestion(question)
       .then((question) => {
         dispatch(addQuestion(question));
@@ -48,7 +48,6 @@ export function handleAddQuestion(question) {
       })
       .catch((e) => {
         console.warn("Error in handleAddQuestion", e);
-        dispatch(answerQuestion(question));
         alert("There was an error adding the question. Try again");
     });
   };

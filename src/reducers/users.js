@@ -21,9 +21,9 @@ export function users(state = {}, action) {
         case SAVE_USER_QUESTION:
             return {
                 ...state,
-                [action.authedUser]: {
-                  ...state[action.authedUser],
-                  questions: state[action.authedUser].questions.concat([action.qid])
+                [action.question.author]: {
+                  ...state[action.question.author],
+                  questions: state[action.question.author].questions.concat([action.question.id])
                 }
               };
         default:
