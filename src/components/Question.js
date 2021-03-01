@@ -5,7 +5,6 @@ import { handleAnswerQuestion } from "../actions/questions";
 import { FourOhFour } from "./FourOhFour";
 
 class Question extends Component {
-
   handleAnswer = (e, answer) => {
     e.preventDefault();
     const { dispatch, id, authedUser } = this.props;
@@ -20,16 +19,16 @@ class Question extends Component {
 
   render() {
     const { authedUser, questions, users, id } = this.props;
-    const disabled =
-      questions[id].optionOne.votes.includes(authedUser) ||
-      questions[id].optionTwo.votes.includes(authedUser);
-    const votes1 = questions[id].optionOne.votes.length;
-    const votes2 = questions[id].optionTwo.votes.length;
     const validId = Object.keys(questions).includes(id);
 
     if (validId !== true) {
       return <FourOhFour />;
     } else {
+      const disabled =
+        questions[id].optionOne.votes.includes(authedUser) ||
+        questions[id].optionTwo.votes.includes(authedUser);
+      const votes1 = questions[id].optionOne.votes.length;
+      const votes2 = questions[id].optionTwo.votes.length;
       return (
         <div className="question">
           <h1>Would you rather</h1>
